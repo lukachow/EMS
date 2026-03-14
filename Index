@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderly Mobility Scale (EMS) Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚶 Elderly Mobility Scale (EMS)</h1>
+            <p class="subtitle">Assessment Tool for Elderly Patients</p>
+        </header>
+
+        <div class="form-container">
+            <form id="emsForm">
+                <div class="patient-info">
+                    <h2>Patient Information</h2>
+                    <div class="form-group">
+                        <label for="patientName">Patient Name:</label>
+                        <input type="text" id="patientName" placeholder="Enter patient name">
+                    </div>
+                    <div class="form-group">
+                        <label for="patientAge">Age:</label>
+                        <input type="number" id="patientAge" placeholder="Enter age" min="0" max="120">
+                    </div>
+                    <div class="form-group">
+                        <label for="assessmentDate">Assessment Date:</label>
+                        <input type="date" id="assessmentDate">
+                    </div>
+                </div>
+
+                <div class="assessment-section">
+                    <h2>Assessment Questions</h2>
+                    <p class="instruction">Score each item: 0 = Unable, 1 = Minimal, 2 = Maximal/Full</p>
+
+                    <!-- Item 1: Lying to Sitting -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>1. Lying to Sitting</h3>
+                            <p class="item-description">Ability to move from lying position to sitting position</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item1" value="0"> 0 - Unable</label>
+                            <label><input type="radio" name="item1" value="1"> 1 - Minimal assistance required</label>
+                            <label><input type="radio" name="item1" value="2"> 2 - Independent</label>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Sitting to Lying -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>2. Sitting to Lying</h3>
+                            <p class="item-description">Ability to move from sitting position to lying position</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item2" value="0"> 0 - Unable</label>
+                            <label><input type="radio" name="item2" value="1"> 1 - Minimal assistance required</label>
+                            <label><input type="radio" name="item2" value="2"> 2 - Independent</label>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Sit to Stand -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>3. Sit to Stand</h3>
+                            <p class="item-description">Ability to move from sitting position to standing position</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item3" value="0"> 0 - Unable</label>
+                            <label><input type="radio" name="item3" value="1"> 1 - Minimal assistance required</label>
+                            <label><input type="radio" name="item3" value="2"> 2 - Independent</label>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Standing -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>4. Standing</h3>
+                            <p class="item-description">Ability to stand unsupported for 60 seconds</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item4" value="0"> 0 - Unable</label>
+                            <label><input type="radio" name="item4" value="1"> 1 - Needs minimal support</label>
+                            <label><input type="radio" name="item4" value="2"> 2 - Stands independently</label>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Gait -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>5. Gait</h3>
+                            <p class="item-description">Ability to walk with or without assistance</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item5" value="0"> 0 - Unable to walk</label>
+                            <label><input type="radio" name="item5" value="1"> 1 - Walks with maximal/moderate assistance</label>
+                            <label><input type="radio" name="item5" value="2"> 2 - Independent walking</label>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Timed Walk (6 metres) -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>6. Timed Walk (6 metres)</h3>
+                            <p class="item-description">Time taken to walk 6 metres at comfortable pace</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item6" value="0"> 0 - Unable or > 13 seconds</label>
+                            <label><input type="radio" name="item6" value="1"> 1 - 10-13 seconds</label>
+                            <label><input type="radio" name="item6" value="2"> 2 - < 10 seconds</label>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: Functional Reach -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <h3>7. Functional Reach</h3>
+                            <p class="item-description">Ability to reach forward while standing</p>
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="item7" value="0"> 0 - < 15 cm</label>
+                            <label><input type="radio" name="item7" value="1"> 1 - 15-23 cm</label>
+                            <label><input type="radio" name="item7" value="2"> 2 - > 23 cm</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="calculateBtn" class="btn btn-primary">Calculate Score</button>
+                    <button type="reset" class="btn btn-secondary">Reset Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section hidden">
+            <h2>Assessment Results</h2>
+            
+            <div class="results-card">
+                <div class="patient-summary">
+                    <p><strong>Patient:</strong> <span id="resultPatientName">N/A</span></p>
+                    <p><strong>Age:</strong> <span id="resultAge">N/A</span></p>
+                    <p><strong>Assessment Date:</strong> <span id="resultDate">N/A</span></p>
+                </div>
+
+                <div class="score-display">
+                    <div class="total-score">
+                        <span class="score-label">Total EMS Score</span>
+                        <span id="totalScore" class="score-number">0</span>
+                        <span class="score-max">out of 20</span>
+                    </div>
+                </div>
+
+                <div class="interpretation">
+                    <h3>Interpretation</h3>
+                    <div id="interpretationBox" class="interpretation-box"></div>
+                </div>
+
+                <div class="detailed-scores">
+                    <h3>Detailed Scores</h3>
+                    <table class="scores-table">
+                        <thead>
+                            <tr>
+                                <th>Assessment Item</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Lying to Sitting</td>
+                                <td id="score1">-</td>
+                            </tr>
+                            <tr>
+                                <td>2. Sitting to Lying</td>
+                                <td id="score2">-</td>
+                            </tr>
+                            <tr>
+                                <td>3. Sit to Stand</td>
+                                <td id="score3">-</td>
+                            </tr>
+                            <tr>
+                                <td>4. Standing</td>
+                                <td id="score4">-</td>
+                            </tr>
+                            <tr>
+                                <td>5. Gait</td>
+                                <td id="score5">-</td>
+                            </tr>
+                            <tr>
+                                <td>6. Timed Walk (6m)</td>
+                                <td id="score6">-</td>
+                            </tr>
+                            <tr>
+                                <td>7. Functional Reach</td>
+                                <td id="score7">-</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total</strong></td>
+                                <td><strong id="tableTotal">0</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recommendations">
+                    <h3>Care Recommendations</h3>
+                    <div id="recommendationsBox" class="recommendations-box"></div>
+                </div>
+
+                <button id="printBtn" class="btn btn-info">🖨️ Print Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
